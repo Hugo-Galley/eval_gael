@@ -21,6 +21,9 @@ class Node:
     def set_next(self, next):
         self.__next = next
 
+    def set_donnee(self, donnee):
+        self.__donnee = donnee
+
 
 class Mystack:
     def __init__(self, size):
