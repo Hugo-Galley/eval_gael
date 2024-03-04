@@ -1,3 +1,10 @@
+
+class MyOutOfSizeException(Exception):
+    pass
+
+class MyEmptyStackException(Exception):
+    pass
+
 class Node:
     def __init__(self, donnee):
         self.__donnee = donnee
@@ -22,7 +29,7 @@ class Mystack:
 
     def add_to_stack(self, element):
         if self.is_full():
-            return 'MyOutOfSizeException'
+            raise MyOutOfSizeException('La pile est pleine')
         new_node = Node(element)
         new_node.set_next(self.sommet)
         self.set_sommet(new_node)
@@ -35,7 +42,7 @@ class Mystack:
 
     def pop_from_stack(self):
         if self.is_empty():
-            return 'MyEmptyStackException'
+            raise MyEmptyStackException('La pile est vide')
         donnee = self.sommet.donnee
         self.set_sommet(self.sommet.next)
         return donnee
@@ -72,11 +79,17 @@ myStack.add_to_stack('hello')
 print(myStack.is_full()) # False
 myStack.add_to_stack('hello')
 print(myStack.is_full()) # True
-print(myStack.add_to_stack('hello')) # MyOutOfSizeException
+try:
+    myStack.add_to_stack('hello')
+except MyOutOfSizeException as e:
+    print(e)
 print(myStack.pop_from_stack()) # hello
 print(myStack.is_empty()) # False
 print(myStack.pop_from_stack()) # hello
 print(myStack.is_empty()) # False
 print(myStack.pop_from_stack()) # hello
 print(myStack.is_empty()) # True
-print(myStack.pop_from_stack()) # MyEmptyStackException
+try:
+    print(myStack.pop_from_stack())
+except MyEmptyStackException as e:
+    print(e)
