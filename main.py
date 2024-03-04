@@ -7,11 +7,15 @@ class Node:
     def donnee(self):
         return self.__donnee
 
+    @donnee.setter
+    def donnee(self, donnee):
+        self.__donnee = donnee
+
     @property
     def next(self):
         return self.__next
-
-    def set_next(self, next):
+    @next.setter
+    def next(self, next):
         self.__next = next
 
 
@@ -55,14 +59,15 @@ class Mystack:
     def size(self):
         return self.__size
 
-    def set_size(self, size):
+    @size.setter
+    def size(self, size):
         self.__size = size
 
     @property
     def sommet(self):
         return self.__sommet
-
-    def set_sommet(self, sommet):
+    @sommet.setter
+    def sommet(self, sommet):
         self.__sommet = sommet
 
 
